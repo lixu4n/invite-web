@@ -29,19 +29,22 @@
             text-align: center;
         }
 
-        /* ✅ Mobile Background Image - Ensures Proper Fit */
+        /* ✅ Mobile Background Image & Text Scaling */
         @media (max-width: 768px) {
             body {
                 background: url('mobile.jpg') no-repeat center center fixed;
-                background-size: cover; /* Ensures it fits properly */
+                background-size: cover;
             }
             h1 {
-                font-size: 45px;
+                font-size: 50px;
                 line-height: 1.2;
+            }
+            h2 {
+                font-size: 30px;
             }
             p {
                 font-size: 16px;
-                max-width: 85%;
+                max-width: 90%;
                 margin: 10px auto;
             }
         }
