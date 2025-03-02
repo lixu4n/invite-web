@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Balloons Party</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Blanka';
+            src: url('https://assets.codepen.io/9632/Blanka-Regular.otf') format('opentype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: url('bg.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #dbc9c9;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        /* Overlay effect */
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Password Screen */
+        .password-screen {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.85);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .password-screen h2 {
+            font-size: 30px;
+            font-family: 'Blanka', sans-serif;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .password-input {
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #dbc9c9;
+            border-radius: 5px;
+            text-align: center;
+            background: transparent;
+            color: #dbc9c9;
+            outline: none;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+
+        .password-button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #dbc9c9;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .password-button:hover {
+            background: #b3a0a0;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Hide content initially */
+        .main-content {
+            display: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #dbc9c9;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            transition: 0.3s;
+            font-family: 'Blanka', sans-serif;
+            letter-spacing: 1.5px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Sections */
+        .homepage, .info, .dress-code {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .info, .dress-code {
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .dress-code {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* ✅ Added Overlay for Homepage Only */
+        .homepage::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Slight Dark Overlay */
+            z-index: 1;
+        }
+
+        /* ✅ Keep text above overlay */
+        .homepage * {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Blanka', sans-serif;
+            font-size: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-family: 'Blanka', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            max-width: 700px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .mood-board a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .mood-board a:hover {
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <h2>Enter Password to Access</h2>
+        <input type="password" id="passwordInput" class="password-input" placeholder="Enter password">
+        <button onclick="checkPassword()" class="password-button">Submit</button>
+        <p class="error-message" id="errorMessage"></p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#info">Info</a>
+            <a href="#dress">Dress Code</a>
+        </nav>
+
+        <!-- Homepage -->
+        <div id="home" class="homepage">
+
+            <h1>Céleste's 24th Birthday</h1>
+            <p>You're invited to the Party and After Party on</p>
+            <p>Saturday March 15th at 7:00 PM at TBD.</p>
+            <p>BYOB</p>
+        </div>
+
+        <!-- Info Section -->
+        <div id="info" class="info">
+
+            <p>When planning my birthday this year I told myself go big or go home...</p>
+            <br/>
+            <h2>Invite Info</h2>
+
+            <br/>
+            <p><strong>When:</strong> Saturday March 15th 2025 @ 7:00 PM</p>
+            <p><strong>Where:</strong> TBD</p>
+
+            
+            <p><em>* No Plus One's for now! Consider yourself a VIP.</em></p>
+
+            <br/>
+            <p><strong>Please RSVP before March 12th!</strong></p>
+            
+            <p><strong>BYOB!</strong> But I'll cook up something lmao.</p>
+            <br/>
+
+
+            <p class="mood-board">
+                Add songs to the Shared Playlist: 
+                <a href="https://open.spotify.com/playlist/61wEIDYcextN5CuDh0vj0O" target="_blank">here</a>
+            </p>
+        </div>
+
+        <!-- Dress Code Section -->
+        <div id="dress" class="dress-code">
+            <h2>Dress Code</h2>
+            <p>House of Balloons theme, a song by The Weeknd. Colors: black, white, silver/sparkles. Dress to impress!</p>
+
+            <p class="mood-board">
+                Find my Pinterest board for inspo  
+                <a href="https://pin.it/7e8wmGTUI" target="_blank">here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            if (document.getElementById("passwordInput").value === "20010319") {
+                document.getElementById("passwordScreen").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            } else {
+                document.getElementById("errorMessage").textContent = "Incorrect password. Try again!";
+            }
+        }
+    </script>
+</body>
+</html>
