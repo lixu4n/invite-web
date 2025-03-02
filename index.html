@@ -29,6 +29,14 @@
             text-align: center;
         }
 
+        /* ✅ Mobile Background Image */
+        @media (max-width: 768px) {
+            body {
+                background: url('mobile.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+
         /* Overlay effect */
         .overlay {
             background: rgba(0, 0, 0, 0.6);
@@ -117,7 +125,7 @@
         }
 
         nav a {
-            color: #dbc9c9;
+            color: inherit; /* ✅ Keep text color the same */
             text-decoration: none;
             margin: 0 20px;
             font-size: 18px;
@@ -130,8 +138,8 @@
         }
 
         nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
+            text-decoration: none;
+
         }
 
         /* Sections */
@@ -166,7 +174,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Slight Dark Overlay */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
@@ -176,9 +184,10 @@
             z-index: 2;
         }
 
+        /* ✅ Keep Homepage Title Big */
         h1 {
             font-family: 'Blanka', sans-serif;
-            font-size: 60px;
+            font-size: 80px; /* ✅ BIG title */
             text-transform: uppercase;
             letter-spacing: 3px;
         }
@@ -195,18 +204,17 @@
             text-align: center;
             line-height: 1.6;
         }
-
         .mood-board a {
-            color: inherit;
-            text-decoration: underline;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    color: inherit; /* ✅ Ensures the link has the same color as the surrounding text */
+    text-decoration: underline; /* ✅ Keeps the underline effect */
+    font-weight: normal; /* ✅ Ensures it doesn't appear bold */
+}
 
-        .mood-board a:hover {
-            text-decoration: none;
-            opacity: 0.8;
-        }
+.mood-board a:hover {
+    text-decoration: none; /* ✅ Removes underline on hover */
+}
+
+        
 
     </style>
 </head>
@@ -231,7 +239,6 @@
 
         <!-- Homepage -->
         <div id="home" class="homepage">
-
             <h1>Céleste's 24th Birthday</h1>
             <p>You're invited to the Party and After Party on</p>
             <p>Saturday March 15th at 7:00 PM at TBD.</p>
@@ -240,36 +247,32 @@
 
         <!-- Info Section -->
         <div id="info" class="info">
-
             <p>When planning my birthday this year I told myself go big or go home...</p>
+
             <br/>
             <h2>Invite Info</h2>
-
-            <br/>
             <p><strong>When:</strong> Saturday March 15th 2025 @ 7:00 PM</p>
             <p><strong>Where:</strong> TBD</p>
-
-            
-            <p><em>* No Plus One's for now! Consider yourself a VIP.</em></p>
-
             <br/>
+            <p><em>* No Plus One's for now! Consider yourself a VIP.</em></p>
             <p><strong>Please RSVP before March 12th!</strong></p>
-            
             <p><strong>BYOB!</strong> But I'll cook up something lmao.</p>
             <br/>
 
-
+            <!-- ✅ Playlist Link -->
             <p class="mood-board">
                 Add songs to the Shared Playlist: 
                 <a href="https://open.spotify.com/playlist/61wEIDYcextN5CuDh0vj0O" target="_blank">here</a>
             </p>
         </div>
 
-        <!-- Dress Code Section -->
+        <!-- ✅ Dress Code Section -->
         <div id="dress" class="dress-code">
             <h2>Dress Code</h2>
-            <p>House of Balloons theme, a song by The Weeknd. Colors: black, white, silver/sparkles. Dress to impress!</p>
+            <p>House of Balloons theme, a song by The Weeknd. 
+                Colors: black, white, silver/sparkles. Dress to impress!</p>
 
+            <!-- ✅ Pinterest Board Link -->
             <p class="mood-board">
                 Find my Pinterest board for inspo  
                 <a href="https://pin.it/7e8wmGTUI" target="_blank">here</a>
