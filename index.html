@@ -29,11 +29,18 @@
             text-align: center;
         }
 
-        /* ✅ Mobile Background Image */
+        /* ✅ Mobile Background Image & Text Adjustments */
         @media (max-width: 768px) {
             body {
                 background: url('mobile.jpg') no-repeat center center fixed;
                 background-size: cover;
+            }
+            h1 {
+                font-size: 50px; /* Smaller title for better mobile readability */
+            }
+            p {
+                font-size: 16px; /* Reduce text size */
+                max-width: 90%;
             }
         }
 
@@ -125,7 +132,7 @@
         }
 
         nav a {
-            color: inherit; /* ✅ Keep text color the same */
+            color: inherit; /* ✅ Ensures link color matches normal text */
             text-decoration: none;
             margin: 0 20px;
             font-size: 18px;
@@ -139,7 +146,6 @@
 
         nav a:hover {
             text-decoration: none;
-
         }
 
         /* Sections */
@@ -187,7 +193,7 @@
         /* ✅ Keep Homepage Title Big */
         h1 {
             font-family: 'Blanka', sans-serif;
-            font-size: 80px; /* ✅ BIG title */
+            font-size: 80px;
             text-transform: uppercase;
             letter-spacing: 3px;
         }
@@ -204,17 +210,17 @@
             text-align: center;
             line-height: 1.6;
         }
+
+        /* ✅ Ensure all links match normal text color */
         .mood-board a {
-    color: inherit; /* ✅ Ensures the link has the same color as the surrounding text */
-    text-decoration: underline; /* ✅ Keeps the underline effect */
-    font-weight: normal; /* ✅ Ensures it doesn't appear bold */
-}
+            color: inherit;
+            text-decoration: underline;
+            font-weight: normal;
+        }
 
-.mood-board a:hover {
-    text-decoration: none; }
-
-        
-
+        .mood-board a:hover {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -247,18 +253,16 @@
         <!-- Info Section -->
         <div id="info" class="info">
             <p>When planning my birthday this year I told myself go big or go home...</p>
-
-            <br/>
+<br/>
             <h2>Invite Info</h2>
             <p><strong>When:</strong> Saturday March 15th 2025 @ 7:00 PM</p>
             <p><strong>Where:</strong> TBD</p>
             <br/>
+
             <p><em>* No Plus One's for now! Consider yourself a VIP.</em></p>
             <p><strong>Please RSVP before March 12th!</strong></p>
             <p><strong>BYOB!</strong> But I'll cook up something lmao.</p>
-            <br/>
-
-            <!-- ✅ Playlist Link -->
+<br/>
             <p class="mood-board">
                 Add songs to the Shared Playlist: 
                 <a href="https://open.spotify.com/playlist/61wEIDYcextN5CuDh0vj0O" target="_blank">here</a>
@@ -268,14 +272,7 @@
         <!-- ✅ Dress Code Section -->
         <div id="dress" class="dress-code">
             <h2>Dress Code</h2>
-            <p>House of Balloons theme, a song by The Weeknd. 
-                Colors: black, white, silver/sparkles. Dress to impress!</p>
-
-            <!-- ✅ Pinterest Board Link -->
-            <p class="mood-board">
-                Find my Pinterest board for inspo  
-                <a href="https://pin.it/7e8wmGTUI" target="_blank">here</a>
-            </p>
+            <p>House of Balloons theme, a song by The Weeknd. Colors: black, white, silver/sparkles. Dress to impress!</p>
         </div>
     </div>
 
